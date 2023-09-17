@@ -3,24 +3,25 @@ import heapq
 
 class Solution:
 
-    #Function to find the shortest distance of all the vertices
-    #from the source vertex S.
+    # Function to find the shortest distance of all the vertices
+    # from the source vertex S.
     def dijkstra(self, V, adj, S):
-        #code here
-        # No need to create an adj list since it has already been given
-        minH = []
-        res = [float('inf')] * V
-        
-        heapq.heappush(minH, [0, S])
+        visited = set()
+        res = [0 for i in range(V)]
         res[S] = 0
+
         def dijkstra():
-            while (len(minH) > 0):
+            cost = 0
+            minH = [(0, S)]
 
-                cost, node = heapq.heappop()
-
+            while (len(visited) < V):
+                dist, node = heapq.heappop(minH)
+                if node in visited:
+                    continue
+                cost = dist
+                visited.add(node)
+                res[node] = cost
                 for edge, weight in adj[node]:
-                    if weight + cost < res[edge]:
-                        heapq.heappush(minH, [weight + cost, edge])
-                        res[edge] = weight + cost
-        dijkstra()
-        return res                
+                    heapq.heappush(minH, (weight + cost, edge))
+            return res
+        return dijkstra()
