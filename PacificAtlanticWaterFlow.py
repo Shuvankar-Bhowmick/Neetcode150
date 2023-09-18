@@ -9,6 +9,9 @@ Return a 2D list of grid coordinates result where result[i] = [ri, ci] denotes t
 '''
 
 
+from typing import List
+
+
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
         rows, cols = len(heights), len(heights[0])

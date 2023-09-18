@@ -8,6 +8,7 @@ Return the maximum area of an island in grid. If there is no island, return 0.
 
 
 import collections
+from typing import List
 
 
 class Solution:
