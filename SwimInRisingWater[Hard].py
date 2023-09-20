@@ -38,9 +38,11 @@ class Solution:
                             (r, c) not in visited
                             ):
                         currHeight = max(temp, grid[r][c])
-                        heapq.heappush(minH, (currHeight, r, c))
-
-        return modifiedDijkstra()
+                        heapq.heappush(minH, (currHeight, r, c)) # type: ignore
+                return -1
+            
+        ans = modifiedDijkstra()
+        return ans # type: ignore
 
     def getAnswer(self):
         ans = self.swimInWater([[0, 2], [1, 3]])
