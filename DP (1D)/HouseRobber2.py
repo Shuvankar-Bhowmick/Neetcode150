@@ -19,4 +19,5 @@ class Solution:
         maxRob = max(self.robHouses(nums, 0, n-1), self.robHouses(nums, 1, n))
         return maxRob
 
+    def rob(self, nums: List)
     
