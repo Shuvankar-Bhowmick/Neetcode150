@@ -3,6 +3,9 @@ You are given an integer array nums. You are initially positioned at the array's
 
 Return true if you can reach the last index, or false otherwise.
 '''
+from typing import List
+
+
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         goalPost = len(nums) - 1
