@@ -16,14 +16,32 @@ Explanation: From the top-left corner, there are a total of 3 ways to reach the 
 
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        rows, cols = m, n
-        
-        row = [1] * n
+        rows = m
+        cols = n
+        # using memoization
+        """ grid = [[0] * n for _ in range(m)]    
 
-        for i in range(m - 1):
-            newRow = [1] * n
-            for j in range(n - 2, -1, -1):
-                newRow[j] = newRow[j + 1] + row[j]
+        def dfs(r, c):
+            if r == rows or c == cols:
+                return 0
+            if grid[r][c] > 0:
+                return grid[r][c]
+            if r == rows - 1 and c == cols - 1:
+                return 1
             
-            row = newRow
-        return row[0]        
+            grid[r][c] = dfs(r + 1, c) + dfs(r, c + 1)
+            return grid[r][c]
+        
+        return dfs(0, 0) """
+
+        # using bottom-up approach for dynamic programming using tabulation method
+        prevRow = [0] * n
+
+        for i in range(rows - 1, -1, -1):
+            currRow = [0] * n
+            currRow[n - 1] = 1
+            for j in range(cols - 2, -1, -1):
+                currRow[j] = prevRow[j] + currRow[j + 1]
+            prevRow = currRow    
+
+        return prevRow[0]    
