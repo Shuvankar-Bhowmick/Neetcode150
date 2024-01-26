@@ -10,7 +10,6 @@ class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         ans = []
         q = collections.deque()
-        l = r = 0
 
         for r in range(len(nums)):
             # check if the queue is having any smaller values
